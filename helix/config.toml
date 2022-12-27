@@ -1,0 +1,13 @@
+theme = "monokai_pro_spectrum"
+
+[editor]
+mouse = false
+true-color = true
+line-number = "relative"
+idle-timeout = 0
+completion-trigger-len = 1
+cursorline = true
+
+[editor.indent-guides]
+render = true
+
