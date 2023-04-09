@@ -4,7 +4,7 @@ end
 
 if set -q ZELLIJ
 else
-    zellij --layout compact
+    zellij
 end
 
 # Generated for envman. Do not edit.
