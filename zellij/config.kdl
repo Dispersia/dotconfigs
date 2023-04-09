@@ -1,5 +1,9 @@
 theme "dracula"
 
+default_layout "compact"
+
+mouse_mode false
+
 pane_frames false
 
 keybinds {
