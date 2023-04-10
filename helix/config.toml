@@ -16,9 +16,8 @@ render = true
 
 [editor.lsp]
 display-messages = true
+snippets = false
 
 [editor.file-picker]
 hidden = false
-git-ignore = false
-
 
