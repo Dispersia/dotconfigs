@@ -17,24 +17,19 @@ vim.api.nvim_exec(
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
-  use 'tpope/vim-commentary'
---  use 'ludovicchabant/vim-gutentags'
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'joshdick/onedark.vim'
-  use 'lukas-reineke/indent-blankline.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use 'nvim-treesitter/nvim-treesitter'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-buffer'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip'
   use 'simrat39/rust-tools.nvim'
   use 'preservim/nerdtree'
   use 'Xuyuanp/nerdtree-git-plugin'
@@ -44,7 +39,6 @@ require('packer').startup(function()
   use 'thosakwe/vim-flutter'
   use 'dart-lang/dart-vim-plugin'
   use { 'iron-e/rust.vim' }
---  use 'jose-elias-alvarez/null-ls.nvim'
   use { 'jose-elias-alvarez/nvim-lsp-ts-utils', requires = { 'nvim-lua/plenary.nvim' } }
   use 'dispersia/lsp-status.nvim'
   use { 'dispersia/galaxyline.nvim', requires = { 'smiteshp/nvim-gps', 'kyazdani42/nvim-web-devicons' } }
