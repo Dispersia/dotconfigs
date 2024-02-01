@@ -1,13 +1,11 @@
 local nvim_lsp = require('lspconfig')
 local lsp_settings = require('plugins.languages.settings')
 
-nvim_lsp.kotlin_language_server.setup{
+nvim_lsp.kotlin_language_server.setup({
   capabilities = lsp_settings.Capabilities,
   on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
-    local opts = { noremap = true, silent = true }
-    
+    local opts = { buffer = bufnr, noremap = true, silent = true }
+    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     lsp_settings.on_attach(client, bufnr)
   end,
-}
+})
