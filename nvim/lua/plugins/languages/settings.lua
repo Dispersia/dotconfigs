@@ -2,8 +2,6 @@ local LSPSettings = {}
 local lsp_status = require('lsp-status')
 
 function LSPSettings.on_attach(client, bufnr)
-  lsp_status.on_attach(client)
-
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
