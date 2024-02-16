@@ -2,10 +2,6 @@ local LSPSettings = {}
 local lsp_status = require('lsp-status')
 
 function LSPSettings.on_attach(client, bufnr)
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   local opts = { buffer = bufnr, noremap = true, silent = true }
 
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)

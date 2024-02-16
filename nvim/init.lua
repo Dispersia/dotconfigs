@@ -18,7 +18,7 @@ require("lazy").setup({
             'nvim-lua/plenary.nvim'
         }
     },
-    { 'joshdick/onedark.vim' },
+    { 'navarasu/onedark.nvim' },
     {
         'lewis6991/gitsigns.nvim',
         dependencies = {
@@ -43,6 +43,25 @@ require("lazy").setup({
             'nvim-tree/nvim-web-devicons',
             'dispersia/lsp-status.nvim'
         }
+    },
+    { 'simrat39/rust-tools.nvim' },
+    { 
+      'scalameta/nvim-metals',
+      dependencies = {
+        'nvim-lsp/plenary.nvim'
+      }
+    },
+    {
+      'akinsho/flutter-tools.nvim',
+      dependencies = {
+        'nvim-lua/plenary.nvim'
+      }
+    },
+    {
+      'jose-elias-alvarez/nvim-lsp-ts-utils',
+      dependencies = {
+        'nvim-lua/plenary.nvim'
+      }
     }
 })
 
