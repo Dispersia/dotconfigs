@@ -37,6 +37,7 @@ require("lazy").setup({
     { 'hrsh7th/cmp-buffer' },
     { 'nvim-tree/nvim-tree.lua' },
     { 'nvim-tree/nvim-web-devicons' },
+    { 'm4xshen/autoclose.nvim' },
     {
         'glepnir/galaxyline.nvim',
         dependencies = {
@@ -68,6 +69,7 @@ require("lazy").setup({
 require('config')
 
 require('lsp-status').register_progress()
+require('autoclose').setup()
 
 require('plugins.cmp-nvim')
 require('plugins.galaxyline')

@@ -13,15 +13,12 @@ require('rust-tools').setup({
   server = {
     capabilities = lsp_settings.Capabilities,
     on_attach = function(client, bufnr)
-      vim.api.nvim_exec(
-        [[
-        augroup AutoFmt
-          autocmd!
-          autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
-        augroup end
-        ]],
-        false
-      )
+      vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+        pattern = { '*.rs' },
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
 
       vim.api.nvim_exec(
         [[
