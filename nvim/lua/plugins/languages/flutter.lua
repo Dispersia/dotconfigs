@@ -12,5 +12,6 @@ require('flutter-tools').setup {
           vim.lsp.buf.format()
         end,
       })
+    end,
   }
 }
