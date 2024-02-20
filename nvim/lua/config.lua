@@ -3,12 +3,7 @@ vim.o.tabstop=2
 vim.o.shiftwidth=2
 vim.o.softtabstop=2
 
-require('onedark').setup {
-  style = 'darker'
-}
-require('onedark').load()
-vim.g.onedark_terminal_italics = 2
-
+vim.cmd [[colorscheme moonfly]]
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 

@@ -18,7 +18,8 @@ require("lazy").setup({
             'nvim-lua/plenary.nvim'
         }
     },
-    { 'navarasu/onedark.nvim' },
+--    { 'navarasu/onedark.nvim' },
+    { 'bluz71/vim-moonfly-colors', name = 'moonfly' },
     {
         'lewis6991/gitsigns.nvim',
         dependencies = {
