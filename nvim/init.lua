@@ -46,6 +46,16 @@ require("lazy").setup({
             'dispersia/lsp-status.nvim'
         }
     },
+    {
+      'folke/which-key.nvim',
+      event = 'VeryLazy',
+      init = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 50
+      end,
+      opts = {
+      }
+    },
     { 'simrat39/rust-tools.nvim' },
     { 
       'scalameta/nvim-metals',
