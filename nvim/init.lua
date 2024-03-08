@@ -56,6 +56,7 @@ require("lazy").setup({
       opts = {
       }
     },
+    { 'HiPhish/rainbow-delimiters.nvim' },
     { 'simrat39/rust-tools.nvim' },
     { 
       'scalameta/nvim-metals',
