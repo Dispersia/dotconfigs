@@ -57,6 +57,10 @@ require("lazy").setup({
       }
     },
     { 'HiPhish/rainbow-delimiters.nvim' },
+    {
+      'folke/trouble.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
     { 'simrat39/rust-tools.nvim' },
     { 
       'scalameta/nvim-metals',

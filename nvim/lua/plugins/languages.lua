@@ -9,3 +9,4 @@ require('plugins.languages.rust')
 require('plugins.languages.scala')
 require('plugins.languages.typescript')
 require('plugins.languages.zig')
+

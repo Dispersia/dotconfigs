@@ -4,6 +4,8 @@ local lsp_status = require('lsp-status')
 function LSPSettings.on_attach(client, bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
 
+  vim.keymap.set('n', '<space>ga', function() require('trouble').toggle() end)
+
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
