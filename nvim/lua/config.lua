@@ -29,13 +29,3 @@ vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
-
-vim.api.nvim_exec(
-    [[
-    augroup AutoLSP
-      autocmd!
-      autocmd CursorHold * lua vim.diagnostic.open_float({ focusable = false })
-    augroup end
-    ]],
-    false
-)
