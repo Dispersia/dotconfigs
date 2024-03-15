@@ -7,6 +7,7 @@ require('plugins.languages.html')
 require('plugins.languages.kotlin')
 require('plugins.languages.rust')
 require('plugins.languages.scala')
+require('plugins.languages.terraform')
 require('plugins.languages.typescript')
 require('plugins.languages.zig')
 
