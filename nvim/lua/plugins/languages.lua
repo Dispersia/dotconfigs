@@ -9,5 +9,6 @@ require('plugins.languages.rust')
 require('plugins.languages.scala')
 require('plugins.languages.terraform')
 require('plugins.languages.typescript')
+require('plugins.languages.yaml')
 require('plugins.languages.zig')
 
