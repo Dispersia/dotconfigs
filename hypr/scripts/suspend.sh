@@ -1,6 +1,6 @@
 #!/bin/sh
 swayidle -w \
-  timeout 60 'swaylock -c 000000' &
+  timeout 180 'swaylock -c 000000' &
 
 swayidle -w \
-    timeout 90 'systemctl suspend' &
+    timeout 300 'systemctl suspend' &
