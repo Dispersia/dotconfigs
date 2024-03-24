@@ -1,4 +1,4 @@
-if set -q ZELLIJ
+if set -q ZELLIJ; or not set -q HYPRLAND_INSTANCE_SIGNATURE
 else
     zellij
 end
