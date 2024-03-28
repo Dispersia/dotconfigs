@@ -43,6 +43,12 @@ function LSPSettings.on_attach(_, bufnr)
       end
     end,
   })
+
+  vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+  })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -13,21 +13,14 @@ require('rust-tools').setup({
   server = {
     capabilities = lsp_settings.Capabilities,
     on_attach = function(client, bufnr)
-      vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-        pattern = { '*.rs' },
+      vim.api.nvim_create_autocmd({ 'BufRead' }, {
+        group = 'CargoUpdate',
+        pattern = 'Cargo.toml',
         callback = function()
-          vim.lsp.buf.format()
+          require('crates').toggle()
         end,
+        silent = true,
       })
-
-      vim.api.nvim_exec(
-        [[
-        augroup CargoUpdate
-          autocmd BufRead Cargo.toml call crates#toggle()
-        augroup end
-        ]],
-        false
-      )
 
       lsp_settings.on_attach(client, bufnr)
     end,
@@ -56,4 +49,3 @@ require('rust-tools').setup({
     },
   }
 })
-

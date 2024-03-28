@@ -7,16 +7,7 @@ require('flutter-tools').setup {
   },
   lsp = {
     capabilities = lsp_settings.Capabilities,
-    on_attach = function(client, bufnr)
-      vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-        pattern = { '*.dart' },
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
-
-      lsp_settings.on_attach(client, bufnr)
-    end,
+    on_attach = lsp_settings.on_attach,
   },
   widget_guides = {
     enabled = true,
