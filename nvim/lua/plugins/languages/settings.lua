@@ -1,7 +1,17 @@
 local LSPSettings = {}
 local lsp_status = require('lsp-status')
 
-function LSPSettings.on_attach(client, bufnr)
+local function is_popup_open()
+  for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.api.nvim_win_get_config(winid).zindex then
+      return true
+    end
+  end
+
+  return false
+end
+
+function LSPSettings.on_attach(_, bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
 
   vim.keymap.set('n', '<space>ga', function() require('trouble').toggle() end)
@@ -33,16 +43,6 @@ function LSPSettings.on_attach(client, bufnr)
       end
     end,
   })
-end
-
-function is_popup_open()
-  for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.api.nvim_win_get_config(winid).zindex then
-      return true
-    end
-  end
-
-  return false
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

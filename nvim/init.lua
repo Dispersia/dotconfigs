@@ -13,12 +13,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
+      'folke/neodev.nvim'
+    },
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim'
         }
     },
---    { 'navarasu/onedark.nvim' },
     { 'bluz71/vim-moonfly-colors', name = 'moonfly' },
     {
         'lewis6991/gitsigns.nvim',
@@ -61,8 +63,15 @@ require("lazy").setup({
       'folke/trouble.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
+    {
+      'rcarriga/nvim-dap-ui',
+      dependencies = {
+        'mfussenegger/nvim-dap',
+        'nvim-neotest/nvim-nio'
+      }
+    },
     { 'simrat39/rust-tools.nvim' },
-    { 
+    {
       'scalameta/nvim-metals',
       dependencies = {
         'nvim-lsp/plenary.nvim'
@@ -71,7 +80,8 @@ require("lazy").setup({
     {
       'akinsho/flutter-tools.nvim',
       dependencies = {
-        'nvim-lua/plenary.nvim'
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim',
       }
     },
     {
@@ -86,8 +96,12 @@ require('config')
 
 require('lsp-status').register_progress()
 require('autoclose').setup()
+require('neodev').setup({
+  library = { plugins = { 'nvim-dap-ui' }, types = true },
+})
 
 require('plugins.cmp-nvim')
+require('plugins.dap')
 require('plugins.galaxyline')
 require('plugins.gitsigns')
 require('plugins.languages')
