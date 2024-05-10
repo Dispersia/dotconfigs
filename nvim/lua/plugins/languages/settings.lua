@@ -46,7 +46,10 @@ function LSPSettings.on_attach(_, bufnr)
 
   vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     callback = function()
-      vim.lsp.buf.format()
+      local file_name = vim.api.nvim_buf_get_name(0)
+      if file_name:match("^.+(%..+)$") ~= ".kts" then
+        vim.lsp.buf.format()
+      end
     end,
   })
 end
@@ -58,4 +61,3 @@ capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
 LSPSettings["Capabilities"] = capabilities
 
 return LSPSettings
-
