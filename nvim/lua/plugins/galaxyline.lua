@@ -79,13 +79,6 @@ gls.left[3] = {
   }
 }
 gls.left[4] = {
-  GitIcon = {
-    provider = function() return '  ' end,
-    condition = condition.check_git_workspace,
-    highlight = {colors.red, colors.bg}
-  }
-}
-gls.left[5] = {
   GitBranch = {
     provider = function()
       local vcs = require('galaxyline.provider_vcs')
@@ -99,7 +92,7 @@ gls.left[5] = {
     highlight = {colors.fg, colors.bg}
   }
 }
-gls.left[6] = {
+gls.left[5] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.check_git_workspace,
@@ -107,7 +100,7 @@ gls.left[6] = {
     highlight = {colors.green, colors.bg}
   }
 }
-gls.left[7] = {
+gls.left[6] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.check_git_workspace,
@@ -115,7 +108,7 @@ gls.left[7] = {
     highlight = {colors.orange, colors.bg}
   }
 }
-gls.left[8] = {
+gls.left[7] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.check_git_workspace,
@@ -123,33 +116,33 @@ gls.left[8] = {
     highlight = {colors.red, colors.bg}
   }
 }
-gls.left[9] = {
+gls.left[8] = {
   LeftEnd = {
     provider = function() return ' ' end,
     highlight = {colors.fg, colors.bg}
   }
 }
-gls.left[10] = {
+gls.left[9] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
     highlight = {colors.red, colors.bg}
   }
 }
-gls.left[11] = {
+gls.left[10] = {
   Space = {
     provider = function() return ' ' end,
     highlight = {colors.fg, colors.bg}
   }
 }
-gls.left[12] = {
+gls.left[11] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
     highlight = {colors.orange, colors.bg}
   }
 }
-gls.left[13] = {
+gls.left[12] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -157,13 +150,13 @@ gls.left[13] = {
     highlight = {colors.fg, colors.bg}
   }
 }
-gls.left[14] = {
+gls.left[13] = {
   Space = {
     provider = function() return ' ' end,
     highlight = {colors.fg, colors.bg}
   }
 }
-gls.left[15] = {
+gls.left[14] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -172,7 +165,7 @@ gls.left[15] = {
     separator_highlight = {colors.section_bg, colors.bg}
   }
 }
-gls.left[16] = {
+gls.left[15] = {
   ShowLspClient = {
     provider = function()
       return lspclient.get_lsp_client('')
@@ -182,7 +175,7 @@ gls.left[16] = {
     separator_highlight = {colors.fg, colors.bg}
   }
 }
-gls.left[17] = {
+gls.left[16] = {
   ShowLspStatus = {
     provider = function()
       return require('lsp-status').status()
