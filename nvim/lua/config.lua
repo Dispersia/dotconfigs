@@ -1,7 +1,7 @@
-vim.o.expandtab=true
-vim.o.tabstop=2
-vim.o.shiftwidth=2
-vim.o.softtabstop=2
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 
 vim.cmd [[colorscheme moonfly]]
 vim.g.loaded_netrw = 1
@@ -29,3 +29,7 @@ vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
+vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]])
+vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]])
+vim.keymap.set('n', '+', [[<cmd>horizontal resize +5<cr>]])
+vim.keymap.set('n', '_', [[<cmd>horizontal resize -5<cr>]])
