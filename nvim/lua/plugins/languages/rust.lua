@@ -14,12 +14,10 @@ require('rust-tools').setup({
     capabilities = lsp_settings.Capabilities,
     on_attach = function(client, bufnr)
       vim.api.nvim_create_autocmd({ 'BufRead' }, {
-        group = 'CargoUpdate',
         pattern = 'Cargo.toml',
         callback = function()
           require('crates').toggle()
         end,
-        silent = true,
       })
 
       lsp_settings.on_attach(client, bufnr)

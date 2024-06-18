@@ -70,6 +70,9 @@ require("lazy").setup({
       'nvim-neotest/nvim-nio'
     }
   },
+  { 'williamboman/mason.nvim' },
+  { 'mfussenegger/nvim-lint' },
+  { 'williamboman/mason-lspconfig.nvim' },
   { 'simrat39/rust-tools.nvim' },
   {
     'scalameta/nvim-metals',
@@ -96,6 +99,8 @@ require("lazy").setup({
 
 require('config')
 
+require('mason').setup()
+require('mason-lspconfig').setup()
 require('lsp-status').register_progress()
 require('autoclose').setup()
 require('neodev').setup({
