@@ -42,7 +42,7 @@ require("lazy").setup({
   { 'nvim-tree/nvim-web-devicons' },
   { 'm4xshen/autoclose.nvim' },
   {
-    'glepnir/galaxyline.nvim',
+    'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
       'dispersia/lsp-status.nvim'
@@ -109,9 +109,9 @@ require('neodev').setup({
 
 require('plugins.cmp-nvim')
 require('plugins.dap')
-require('plugins.galaxyline')
 require('plugins.gitsigns')
 require('plugins.languages')
+require('plugins.lualine')
 require('plugins.nvim-tree')
 require('plugins.treesitter')
 require('plugins.telescope')
