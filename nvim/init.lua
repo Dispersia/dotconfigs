@@ -33,7 +33,22 @@ require("lazy").setup({
   { 'neovim/nvim-lspconfig' },
   { 'L3MON4D3/LuaSnip' },
   { 'saadparwaiz1/cmp_luasnip' },
-  { 'hrsh7th/nvim-cmp' },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'luckasRanarison/tailwind-tools.nvim',
+      'onsails/lspkind-nvim'
+    },
+    opts = function()
+      return {
+        formatting = {
+          format = require('lspkind').cmp_format({
+            before = require('tailwind-tools.cmp').lspkind_format
+          })
+        }
+      }
+    end,
+  },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-vsnip' },
   { 'hrsh7th/cmp-path' },
@@ -41,6 +56,11 @@ require("lazy").setup({
   { 'nvim-tree/nvim-tree.lua' },
   { 'nvim-tree/nvim-web-devicons' },
   { 'm4xshen/autoclose.nvim' },
+  {
+    'luckasRanarison/tailwind-tools.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {}
+  },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {

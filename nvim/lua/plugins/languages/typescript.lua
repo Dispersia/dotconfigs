@@ -12,3 +12,8 @@ nvim_lspconfig.tsserver.setup({
     lsp_settings.on_attach(client, bufnr)
   end,
 })
+
+nvim_lspconfig.tailwindcss.setup({
+  capabilities = lsp_settings.Capabilities,
+  on_attach = lsp_settings.on_attach
+})
