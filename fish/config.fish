@@ -1,5 +1,4 @@
-if set -q ZELLIJ; or not set -q HYPRLAND_INSTANCE_SIGNATURE
-else
+if not set -q ZELLIJ; and set -q XDG_CURRENT_DESKTOP
     zellij
 end
 
