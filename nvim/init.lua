@@ -28,7 +28,14 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim'
     }
   },
-  { 'nvim-treesitter/nvim-treesitter',            build = ":TSUpdate" },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ":TSUpdate",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, { "rot", "rust", "toml" })
+    end
+  },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'neovim/nvim-lspconfig' },
   { 'L3MON4D3/LuaSnip' },
@@ -93,7 +100,17 @@ require("lazy").setup({
   { 'williamboman/mason.nvim' },
   { 'mfussenegger/nvim-lint' },
   { 'williamboman/mason-lspconfig.nvim' },
-  { 'simrat39/rust-tools.nvim' },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5',
+    lazy = false
+  },
+  {
+    'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
+    opts = {},
+    config = function(_, opts) require 'lsp_signature'.setup(opts) end
+  },
   {
     'scalameta/nvim-metals',
     dependencies = {
