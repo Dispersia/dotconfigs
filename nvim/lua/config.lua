@@ -1,3 +1,4 @@
+vim.opt.clipboard = "unnamedplus"
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
@@ -33,3 +34,6 @@ vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]])
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]])
 vim.keymap.set('n', '+', [[<cmd>horizontal resize +5<cr>]])
 vim.keymap.set('n', '_', [[<cmd>horizontal resize -5<cr>]])
+
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])

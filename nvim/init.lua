@@ -62,7 +62,7 @@ require("lazy").setup({
   { 'hrsh7th/cmp-buffer' },
   { 'nvim-tree/nvim-tree.lua' },
   { 'nvim-tree/nvim-web-devicons' },
-  { 'm4xshen/autoclose.nvim' },
+  --{ 'tmsvg/pear-tree' },
   {
     'luckasRanarison/tailwind-tools.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -139,7 +139,6 @@ require('config')
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('lsp-status').register_progress()
-require('autoclose').setup()
 require('neodev').setup({
   library = { plugins = { 'nvim-dap-ui' }, types = true },
 })
