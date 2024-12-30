@@ -12,8 +12,30 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  { 'folke/lazydev.nvim' },
   {
-    'folke/neodev.nvim'
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true
+  },
+  {
+    'mikavilpas/yazi.nvim',
+    event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>-',
+        '<cmd>Yazi<cr>',
+        desc = 'Open yazi at the current file'
+      },
+      {
+        '<leader>cw',
+        '<cmd>Yazi cwd<cr>',
+        desc = 'Open the file manager in nvims working',
+      },
+    },
+    opts = {
+      open_for_directories = true
+    }
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -21,7 +43,7 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim'
     }
   },
-  { 'bluz71/vim-moonfly-colors',                  name = 'moonfly' },
+  { 'bluz71/vim-moonfly-colors', name = 'moonfly' },
   {
     'lewis6991/gitsigns.nvim',
     dependencies = {
@@ -38,16 +60,21 @@ require("lazy").setup({
   },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'neovim/nvim-lspconfig' },
-  { 'L3MON4D3/LuaSnip' },
-  { 'saadparwaiz1/cmp_luasnip' },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'luckasRanarison/tailwind-tools.nvim',
       'onsails/lspkind-nvim'
     },
-    opts = function()
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+
+      table.insert(opts.sources, {
+        name = 'lazydev',
+        group_index = 0
+      })
       return {
+        sources = opts.sources,
         formatting = {
           format = require('lspkind').cmp_format({
             before = require('tailwind-tools.cmp').lspkind_format
@@ -60,9 +87,7 @@ require("lazy").setup({
   { 'hrsh7th/cmp-vsnip' },
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-buffer' },
-  { 'nvim-tree/nvim-tree.lua' },
   { 'nvim-tree/nvim-web-devicons' },
-  --{ 'tmsvg/pear-tree' },
   {
     'luckasRanarison/tailwind-tools.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -88,7 +113,15 @@ require("lazy").setup({
   { 'HiPhish/rainbow-delimiters.nvim' },
   {
     'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    opts = {},
+    cmd = 'Trouble',
+    keys = {
+      {
+        '<leader>xx',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (trouble)'
+      }
+    }
   },
   {
     'rcarriga/nvim-dap-ui',
@@ -139,15 +172,11 @@ require('config')
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('lsp-status').register_progress()
-require('neodev').setup({
-  library = { plugins = { 'nvim-dap-ui' }, types = true },
-})
 
 require('plugins.cmp-nvim')
 require('plugins.dap')
 require('plugins.gitsigns')
 require('plugins.languages')
 require('plugins.lualine')
-require('plugins.nvim-tree')
 require('plugins.treesitter')
 require('plugins.telescope')

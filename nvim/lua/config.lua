@@ -5,8 +5,6 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 
 vim.cmd [[colorscheme moonfly]]
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 vim.o.inccommand = 'nosplit'
 vim.o.hlsearch = false
