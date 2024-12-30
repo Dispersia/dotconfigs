@@ -12,7 +12,25 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { 'folke/lazydev.nvim' },
+  { 'rebelot/kanagawa.nvim' },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {}
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      }
+    }
+  },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -43,7 +61,6 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim'
     }
   },
-  { 'bluz71/vim-moonfly-colors', name = 'moonfly' },
   {
     'lewis6991/gitsigns.nvim',
     dependencies = {
@@ -66,15 +83,8 @@ require("lazy").setup({
       'luckasRanarison/tailwind-tools.nvim',
       'onsails/lspkind-nvim'
     },
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-
-      table.insert(opts.sources, {
-        name = 'lazydev',
-        group_index = 0
-      })
+    opts = function()
       return {
-        sources = opts.sources,
         formatting = {
           format = require('lspkind').cmp_format({
             before = require('tailwind-tools.cmp').lspkind_format
@@ -172,6 +182,31 @@ require('config')
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('lsp-status').register_progress()
+
+local rainbow_delimiters = require('rainbow-delimiters')
+require('rainbow-delimiters.setup').setup({
+  strategy = {
+    [''] = rainbow_delimiters.strategy['global'],
+    vim = rainbow_delimiters.strategy['local'],
+  },
+  query = {
+    [''] = 'rainbow-delimiters',
+    lua = 'rainbow-blocks',
+  },
+  priority = {
+    [''] = 110,
+    lua = 210,
+  },
+  highlight = {
+    'RainbowDelimiterCyan',
+    'RainbowDelimiterGreen',
+    'RainbowDelimiterBlue',
+    'RainbowDelimiterViolet',
+    'RainbowDelimiterYellow',
+    'RainbowDelimiterOrange',
+    'RainbowDelimiterRed'
+  }
+})
 
 require('plugins.cmp-nvim')
 require('plugins.dap')
