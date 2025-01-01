@@ -14,6 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { 'rebelot/kanagawa.nvim' },
   {
+    'folke/zen-mode.nvim',
+    opts = {}
+  },
+  {
     'romgrk/barbar.nvim',
     dependencies = {
       'lewis6991/gitsigns.nvim',
