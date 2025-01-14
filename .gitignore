@@ -1,4 +1,6 @@
 helix/runtime
 fish/fish_variables
 hypr/devices.conf
+hypr/monitors.conf
+hypr/workspaces.conf
 nvim/lazy-lock.json
