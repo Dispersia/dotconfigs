@@ -1,5 +1,5 @@
 if not set -q ZELLIJ; and set -q XDG_CURRENT_DESKTOP
-    zellij
+  zellij
 end
 
 set -g fish_greeting
