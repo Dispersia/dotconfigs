@@ -1,9 +1,7 @@
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 local lsp_settings = require('plugins.languages.settings')
 
-nvim_lsp.zls.setup {
+lspconfig.fsautocomplete.setup {
   capabilities = lsp_settings.Capabilities,
   on_attach = lsp_settings.on_attach
 }
-
-vim.g.zig_fmt_autosave = 0
