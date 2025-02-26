@@ -18,7 +18,7 @@ nvim_lspconfig.tailwindcss.setup({
   on_attach = lsp_settings.on_attach,
   root_dir = function(fname)
     local root_pattern = nvim_lspconfig.util.root_pattern("tailwind.config.cjs", "tailwind.config.js",
-      "postcss.config.js")
+      "postcss.config.js", "package.json")
     return root_pattern(fname)
   end
 })
