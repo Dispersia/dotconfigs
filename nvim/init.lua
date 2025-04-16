@@ -124,7 +124,10 @@ require("lazy").setup({
     opts = {
     }
   },
-  { 'HiPhish/rainbow-delimiters.nvim' },
+  {
+    'HiPhish/rainbow-delimiters.nvim',
+    submodules = false
+  },
   {
     'folke/trouble.nvim',
     opts = {},
