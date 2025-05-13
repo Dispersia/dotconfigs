@@ -181,12 +181,22 @@ require("lazy").setup({
     }
   },
   { 'CraneStation/cranelift.vim' },
-  { 'slint-ui/vim-slint' }
+  { 'slint-ui/vim-slint' },
+  {
+    'seblyng/roslyn.nvim',
+    ft = "cs",
+    opts = {}
+  }
 })
 
 require('config')
 
-require('mason').setup()
+require('mason').setup({
+  registries = {
+    "github:mason-org/mason-registry",
+    "github:Crashdummyy/mason-registry",
+  },
+})
 require('mason-lspconfig').setup()
 require('lsp-status').register_progress()
 

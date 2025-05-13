@@ -1,7 +1,6 @@
 require('plugins.languages.bicep')
 require('plugins.languages.cpp')
 require('plugins.languages.css')
-require('plugins.languages.dotnet')
 require('plugins.languages.flutter')
 require('plugins.languages.go')
 require('plugins.languages.html')
