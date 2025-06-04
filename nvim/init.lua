@@ -147,9 +147,15 @@ require("lazy").setup({
       'nvim-neotest/nvim-nio'
     }
   },
-  { 'williamboman/mason.nvim' },
   { 'mfussenegger/nvim-lint' },
-  { 'williamboman/mason-lspconfig.nvim' },
+  {
+    'mason-org/mason-lspconfig.nvim',
+    opts = {},
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig"
+    }
+  },
   {
     'mrcjkb/rustaceanvim',
     version = '^5',
