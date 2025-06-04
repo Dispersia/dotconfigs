@@ -203,7 +203,6 @@ require('mason').setup({
     "github:Crashdummyy/mason-registry",
   },
 })
-require('mason-lspconfig').setup()
 require('lsp-status').register_progress()
 
 local rainbow_delimiters = require('rainbow-delimiters')
