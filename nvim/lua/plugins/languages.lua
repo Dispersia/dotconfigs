@@ -1,5 +1,4 @@
 require('plugins.languages.flutter')
 require('plugins.languages.rust')
 require('plugins.languages.scala')
-require('plugins.languages.slint')
 require('plugins.languages.wgsl')
