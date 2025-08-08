@@ -255,12 +255,6 @@ require("lazy").setup({
     lazy = false
   },
   {
-    'ray-x/lsp_signature.nvim',
-    event = 'VeryLazy',
-    opts = {},
-    config = function(_, opts) require 'lsp_signature'.setup(opts) end
-  },
-  {
     'scalameta/nvim-metals',
     dependencies = {
       'nvim-lsp/plenary.nvim'
@@ -279,8 +273,6 @@ require("lazy").setup({
       'nvim-lua/plenary.nvim'
     }
   },
-  { 'CraneStation/cranelift.vim' },
-  { 'slint-ui/vim-slint' },
   {
     'seblyng/roslyn.nvim',
     ft = "cs",
