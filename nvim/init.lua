@@ -82,25 +82,80 @@ require("lazy").setup({
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   { 'neovim/nvim-lspconfig' },
   {
-    'hrsh7th/nvim-cmp',
+    'saghen/blink.cmp',
+    version = '1.*',
     dependencies = {
+      'rafamadriz/friendly-snippets',
       'luckasRanarison/tailwind-tools.nvim',
       'onsails/lspkind-nvim'
     },
-    opts = function()
-      return {
-        formatting = {
-          format = require('lspkind').cmp_format({
-            before = require('tailwind-tools.cmp').lspkind_format
-          })
+    opts = {
+      appearance = {
+        use_nvim_cmp_as_default = false,
+        nerd_font_variant = "mono"
+      },
+      completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 250,
+          treesitter_highlighting = true,
+          window = { border = "rounded" }
         }
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          lsp = {
+            min_keyword_length = 0,
+            score_offset = 0
+          },
+          path = {
+            min_keyword_length = 0
+          },
+          snippets = {
+            min_keyword_length = 2
+          },
+          buffer = {
+            min_keyword_length = 5,
+            max_items = 5
+          }
+        }
+      },
+      keymap = {
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+
+        ["<Tab>"] = {
+          function(cmp)
+            return cmp.select_next()
+          end,
+          "snippet_forward",
+          "fallback"
+        },
+        ["<S-Tab>"] = {
+          function(cmp)
+            return cmp.select_prev()
+          end,
+          "snippet_backward",
+          "fallback",
+        },
+      },
+      signature = {
+        enabled = true,
+        window = { border = "rounded" }
       }
-    end,
+    }
+    --opts = function()
+    --return {
+    --formatting = {
+    --format = require('lspkind').cmp_format({
+    --before = require('tailwind-tools.cmp').lspkind_format
+    --})
+    --}
+    --}
+    --end,
   },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-vsnip' },
-  { 'hrsh7th/cmp-path' },
-  { 'hrsh7th/cmp-buffer' },
   { 'nvim-tree/nvim-web-devicons' },
   {
     'luckasRanarison/tailwind-tools.nvim',
@@ -240,7 +295,6 @@ require('rainbow-delimiters.setup').setup({
   }
 })
 
-require('plugins.cmp-nvim')
 require('plugins.dap')
 require('plugins.gitsigns')
 require('plugins.languages')
