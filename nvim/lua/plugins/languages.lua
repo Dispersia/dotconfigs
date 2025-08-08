@@ -3,11 +3,16 @@ require('plugins.languages.rust')
 require('plugins.languages.scala')
 require('plugins.languages.wgsl')
 
-local lspconfig = require('lspconfig')
 local lsp_settings = require('plugins.languages.settings')
-local mason_lspconfig = require('mason-lspconfig')
 
 vim.lsp.config("*", {
   capabilities = lsp_settings.Capabilities,
   on_attach = lsp_settings.on_attach,
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.fs",
+  callback = function()
+    vim.bo.filetype = "fsharp"
+  end,
 })
