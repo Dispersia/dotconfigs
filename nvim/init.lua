@@ -14,10 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { 'rebelot/kanagawa.nvim' },
   {
-    'folke/zen-mode.nvim',
-    opts = {}
-  },
-  {
     'romgrk/barbar.nvim',
     dependencies = {
       'lewis6991/gitsigns.nvim',
@@ -87,103 +83,75 @@ require("lazy").setup({
     dependencies = {
       'rafamadriz/friendly-snippets',
       'luckasRanarison/tailwind-tools.nvim',
-      'onsails/lspkind-nvim'
+      'onsails/lspkind-nvim',
+      'xzbdmw/colorful-menu.nvim',
     },
-    opts = {
-      appearance = {
-        use_nvim_cmp_as_default = false,
-        nerd_font_variant = "mono"
-      },
-      completion = {
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 0,
-          treesitter_highlighting = true,
-          window = { border = "rounded" }
-        }
-      },
-      menu = {
-        border = "rounded",
-        cmdline_position = function()
-          if vim.g.ui_cmdline_pos ~= nil then
-            local pos = vim.g.ui_cmdline_pos
-            return { pos[1] - 1, pos[2] }
-          end
-          local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-          return { vim.o.lines - height, 0 }
-        end,
-        draw = {
-          columns = {
-            { "kind_icon", "label", gap = 1 },
-            { "kind" }
-          },
-          components = {
-            kind_icon = {
-              text = function(item)
-                local kind = require("lspkind").symbol_map[item.kind] or ""
-                return kind .. " "
-              end,
-              height = "CmpItemKind",
-            },
-            label = {
-              text = function(item)
-                return item.label
-              end,
-              highlight = "CmpItemAbbr",
-            },
-            kind = {
-              text = function(item)
-                return item.kind
-              end,
-              highlight = "CmpItemKind"
+    config = function()
+      require('blink.cmp').setup({
+        appearance = {
+          use_nvim_cmp_as_default = true,
+          nerd_font_variant = "mono"
+        },
+        completion = {
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 0,
+            treesitter_highlighting = true,
+            window = { border = "rounded" }
+          }
+        },
+        menu = {
+          border = "rounded",
+          draw = {
+            columns = { { "kind_icon" }, { "label", gap = 1 } },
+            components = {
+              kind_icon = {
+                text = function(item)
+                  local kind = require("lspkind").symbol_map[item.kind] or ""
+                  return kind .. " "
+                end,
+                highlight = "CmpItemKind",
+              },
+              label = {
+                text = function(ctx)
+                  return require("colorful-menu").blink_components_text(ctx)
+                end,
+                highlight = function(ctx)
+                  return require("colorful-menu").blink_components_highlight(ctx)
+                end,
+              }
             }
           }
-        }
-      },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-        providers = {
-          lsp = {
-            min_keyword_length = 0,
-            score_offset = 0
-          },
-          path = {
-            min_keyword_length = 0
-          },
-          snippets = {
-            min_keyword_length = 2
-          },
-          buffer = {
-            min_keyword_length = 5,
-            max_items = 5
-          }
-        }
-      },
-      keymap = {
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
+        },
+        sources = {
+          default = { 'lsp', 'path', 'snippets', 'buffer' },
+        },
+        keymap = {
+          ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+          ["<C-e>"] = { "hide", "fallback" },
+          ["<CR>"] = { "accept", "fallback" },
 
-        ["<Tab>"] = {
-          function(cmp)
-            return cmp.select_next()
-          end,
-          "snippet_forward",
-          "fallback"
+          ["<Tab>"] = {
+            function(cmp)
+              return cmp.select_next()
+            end,
+            "snippet_forward",
+            "fallback"
+          },
+          ["<S-Tab>"] = {
+            function(cmp)
+              return cmp.select_prev()
+            end,
+            "snippet_backward",
+            "fallback",
+          },
         },
-        ["<S-Tab>"] = {
-          function(cmp)
-            return cmp.select_prev()
-          end,
-          "snippet_backward",
-          "fallback",
-        },
-      },
-      signature = {
-        enabled = true,
-        window = { border = "rounded" }
-      }
-    }
+        signature = {
+          enabled = true,
+          window = { border = "rounded" }
+        }
+      })
+    end
     --opts = function()
     --return {
     --formatting = {
@@ -247,17 +215,6 @@ require("lazy").setup({
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
       "neovim/nvim-lspconfig"
-    }
-  },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5',
-    lazy = false
-  },
-  {
-    'scalameta/nvim-metals',
-    dependencies = {
-      'nvim-lsp/plenary.nvim'
     }
   },
   {
