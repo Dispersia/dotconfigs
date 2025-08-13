@@ -35,6 +35,7 @@ vim.keymap.set('n', '_', [[<cmd>horizontal resize -5<cr>]])
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set('n', 'q', "<Nop>")
 
 vim.opt.scrolloff = 10
 vim.opt.mouse = ""
