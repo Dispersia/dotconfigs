@@ -39,7 +39,7 @@ function LSPSettings.on_attach(_, bufnr)
   vim.api.nvim_create_autocmd({ 'CursorHold' }, {
     callback = function()
       if not is_popup_open() then
-        vim.diagnostic.open_float({ focusable = false })
+        vim.diagnostic.open_float({ focusable = false, close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" } })
       end
     end,
   })
