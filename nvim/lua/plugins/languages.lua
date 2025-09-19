@@ -1,5 +1,4 @@
 require('plugins.languages.flutter')
-require('plugins.languages.wgsl')
 
 local lsp_settings = require('plugins.languages.settings')
 

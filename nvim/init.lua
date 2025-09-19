@@ -86,19 +86,17 @@ require("lazy").setup({
       'onsails/lspkind-nvim',
       'xzbdmw/colorful-menu.nvim',
     },
-    config = function()
-      require('blink.cmp').setup({
-        appearance = {
-          use_nvim_cmp_as_default = true,
-          nerd_font_variant = "mono"
-        },
-        completion = {
-          documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 0,
-            treesitter_highlighting = true,
-            window = { border = "rounded" }
-          }
+    opts = {
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono"
+      },
+      completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 0,
+          treesitter_highlighting = true,
+          window = { border = "rounded" }
         },
         menu = {
           border = "rounded",
@@ -123,44 +121,35 @@ require("lazy").setup({
             }
           }
         },
-        sources = {
-          default = { 'lsp', 'path', 'snippets', 'buffer' },
-        },
-        keymap = {
-          ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-          ["<C-e>"] = { "hide", "fallback" },
-          ["<CR>"] = { "accept", "fallback" },
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      keymap = {
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
 
-          ["<Tab>"] = {
-            function(cmp)
-              return cmp.select_next()
-            end,
-            "snippet_forward",
-            "fallback"
-          },
-          ["<S-Tab>"] = {
-            function(cmp)
-              return cmp.select_prev()
-            end,
-            "snippet_backward",
-            "fallback",
-          },
+        ["<Tab>"] = {
+          function(cmp)
+            return cmp.select_next()
+          end,
+          "snippet_forward",
+          "fallback"
         },
-        signature = {
-          enabled = true,
-          window = { border = "rounded" }
-        }
-      })
-    end
-    --opts = function()
-    --return {
-    --formatting = {
-    --format = require('lspkind').cmp_format({
-    --before = require('tailwind-tools.cmp').lspkind_format
-    --})
-    --}
-    --}
-    --end,
+        ["<S-Tab>"] = {
+          function(cmp)
+            return cmp.select_prev()
+          end,
+          "snippet_backward",
+          "fallback",
+        },
+      },
+      signature = {
+        enabled = true,
+        window = { border = "rounded" }
+      }
+    }
   },
   { 'nvim-tree/nvim-web-devicons' },
   {
