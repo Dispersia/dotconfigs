@@ -1,279 +1,39 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
-  { 'rebelot/kanagawa.nvim' },
-  {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    init = function() vim.g.barbar_auto_setup = false end,
-    opts = {}
-  },
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-      }
-    }
-  },
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = true
-  },
-  {
-    'mikavilpas/yazi.nvim',
-    event = 'VeryLazy',
-    keys = {
-      {
-        '<leader>-',
-        '<cmd>Yazi<cr>',
-        desc = 'Open yazi at the current file'
-      },
-      {
-        '<leader>cw',
-        '<cmd>Yazi cwd<cr>',
-        desc = 'Open the file manager in nvims working',
-      },
-    },
-    opts = {
-      open_for_directories = true
-    }
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    }
-  },
-  {
-    'lewis6991/gitsigns.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    }
-  },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ":TSUpdate",
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "rot", "rust", "toml" })
-    end
-  },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
-  { 'neovim/nvim-lspconfig' },
-  {
-    'saghen/blink.cmp',
-    version = '1.*',
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      'luckasRanarison/tailwind-tools.nvim',
-      'onsails/lspkind-nvim',
-      'xzbdmw/colorful-menu.nvim',
-    },
-    opts = {
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = "mono"
-      },
-      completion = {
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 0,
-          treesitter_highlighting = true,
-          window = { border = "rounded" }
-        },
-        menu = {
-          border = "rounded",
-          draw = {
-            columns = { { "kind_icon" }, { "label", gap = 1 } },
-            components = {
-              kind_icon = {
-                text = function(item)
-                  local kind = require("lspkind").symbol_map[item.kind] or ""
-                  return kind .. " "
-                end,
-                highlight = "CmpItemKind",
-              },
-              label = {
-                text = function(ctx)
-                  return require("colorful-menu").blink_components_text(ctx)
-                end,
-                highlight = function(ctx)
-                  return require("colorful-menu").blink_components_highlight(ctx)
-                end,
-              }
-            }
-          }
-        },
-      },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-      },
-      keymap = {
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
-
-        ["<Tab>"] = {
-          function(cmp)
-            return cmp.select_next()
-          end,
-          "snippet_forward",
-          "fallback"
-        },
-        ["<S-Tab>"] = {
-          function(cmp)
-            return cmp.select_prev()
-          end,
-          "snippet_backward",
-          "fallback",
-        },
-      },
-      signature = {
-        enabled = true,
-        window = { border = "rounded" }
-      }
-    }
-  },
-  { 'nvim-tree/nvim-web-devicons' },
-  {
-    'luckasRanarison/tailwind-tools.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    opts = {}
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      'dispersia/lsp-status.nvim'
-    }
-  },
-  {
-    'folke/which-key.nvim',
-    event = 'VeryLazy',
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 50
-    end,
-    opts = {
-    }
-  },
-  {
-    'HiPhish/rainbow-delimiters.nvim',
-    submodules = false
-  },
-  {
-    'folke/trouble.nvim',
-    opts = {},
-    cmd = 'Trouble',
-    keys = {
-      {
-        '<leader>xx',
-        '<cmd>Trouble diagnostics toggle<cr>',
-        desc = 'Diagnostics (trouble)'
-      }
-    }
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-      'nvim-neotest/nvim-nio'
-    }
-  },
-  { 'mfussenegger/nvim-lint' },
-  {
-    'mason-org/mason-lspconfig.nvim',
-    opts = {},
-    dependencies = {
-      { "mason-org/mason.nvim", opts = {} },
-      "neovim/nvim-lspconfig"
-    }
-  },
-  {
-    'akinsho/flutter-tools.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',
-    }
-  },
-  {
-    'jose-elias-alvarez/nvim-lsp-ts-utils',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    }
-  },
-  {
-    'seblyng/roslyn.nvim',
-    ft = "cs",
-    opts = {}
-  },
-  {
-    'f-person/git-blame.nvim',
-    event = 'VeryLazy',
-    opts = {
-      enabled = true,
-      message_template = ' <summary> • <date> • <author> • <<sha>>',
-      date_format = '%m-%d-%Y %H:%M:%S',
-      virtual_text_column = 1
-    }
-  }
+vim.pack.add({
+  'https://github.com/mason-org/mason.nvim',
+  'https://github.com/folke/snacks.nvim',
+  'https://github.com/adriankarlen/plugin-view.nvim',
+  'https://github.com/rebelot/kanagawa.nvim',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/romgrk/barbar.nvim',
+  'https://github.com/windwp/nvim-autopairs',
+  'https://github.com/mikavilpas/yazi.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+  'https://github.com/rafamadriz/friendly-snippets',
+  'https://github.com/luckasranarison/tailwind-tools.nvim',
+  'https://github.com/onsails/lspkind-nvim',
+  'https://github.com/xzbdmw/colorful-menu.nvim',
+  'https://github.com/saghen/blink.cmp',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/dispersia/lsp-status.nvim',
+  'https://github.com/nvim-lualine/lualine.nvim',
+  'https://github.com/folke/which-key.nvim',
+  'https://github.com/HiPhish/rainbow-delimiters.nvim',
+  'https://github.com/folke/trouble.nvim',
+  'https://github.com/mfussenegger/nvim-dap',
+  'https://github.com/nvim-neotest/nvim-nio',
+  'https://github.com/rcarriga/nvim-dap-ui',
+  'https://github.com/stevearc/dressing.nvim',
+  'https://github.com/akinsho/flutter-tools.nvim',
+  'https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils',
+  'https://github.com/seblyng/roslyn.nvim',
+  'https://github.com/f-person/git-blame.nvim'
 })
 
+require('plugins')
 require('config')
-
-require('mason').setup({
-  registries = {
-    "github:mason-org/mason-registry",
-    "github:Crashdummyy/mason-registry",
-  },
-})
-require('lsp-status').register_progress()
-
-local rainbow_delimiters = require('rainbow-delimiters')
-require('rainbow-delimiters.setup').setup({
-  strategy = {
-    [''] = rainbow_delimiters.strategy['global'],
-    vim = rainbow_delimiters.strategy['local'],
-  },
-  query = {
-    [''] = 'rainbow-delimiters',
-    lua = 'rainbow-blocks',
-  },
-  priority = {
-    [''] = 110,
-    lua = 210,
-  },
-  highlight = {
-    'RainbowDelimiterCyan',
-    'RainbowDelimiterGreen',
-    'RainbowDelimiterBlue',
-    'RainbowDelimiterViolet',
-    'RainbowDelimiterYellow',
-    'RainbowDelimiterOrange',
-    'RainbowDelimiterRed'
-  }
-})
-
-require('plugins.dap')
-require('plugins.gitsigns')
-require('plugins.languages')
-require('plugins.lualine')
-require('plugins.treesitter')
-require('plugins.telescope')
+require('lsp')

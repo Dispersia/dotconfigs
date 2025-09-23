@@ -1,5 +1,21 @@
-local LSPSettings = {}
-local lsp_status = require('lsp-status')
+vim.lsp.enable({
+    'lua_ls'
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    if client then
+      on_attach(_, ev.buf)
+    end
+  end,
+})
+
+vim.lsp.config("*", {
+  capabilities = capabilities,
+})
+
 
 local function is_popup_open()
   for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -11,7 +27,7 @@ local function is_popup_open()
   return false
 end
 
-function LSPSettings.on_attach(_, bufnr)
+function on_attach(_, bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
 
   vim.keymap.set('n', '<space>ga', function() require('trouble').toggle() end)
@@ -30,7 +46,7 @@ function LSPSettings.on_attach(_, bufnr)
   vim.keymap.set('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float({ focusable = false })<CR>', opts)
-  vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { noremap = true })
+  vim.keymap.set('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   vim.keymap.set('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   vim.keymap.set('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   vim.keymap.set('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -56,8 +72,4 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_extend('keep', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
-capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
-
-LSPSettings["Capabilities"] = capabilities
-
-return LSPSettings
+capabilities = vim.tbl_extend('keep', capabilities, require("lsp-status").capabilities)
