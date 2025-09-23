@@ -28,7 +28,6 @@ vim.pack.add({
   'https://github.com/nvim-neotest/nvim-nio',
   'https://github.com/rcarriga/nvim-dap-ui',
   'https://github.com/stevearc/dressing.nvim',
-  'https://github.com/akinsho/flutter-tools.nvim',
   'https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils',
   'https://github.com/seblyng/roslyn.nvim',
   'https://github.com/f-person/git-blame.nvim'
