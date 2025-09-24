@@ -1,6 +1,7 @@
 require("plugins.blink")
 require("plugins.conform")
 require("plugins.dashboard")
+require("plugins.flash")
 require("plugins.git-blame")
 require("plugins.gitsigns")
 require("plugins.lsp-status")

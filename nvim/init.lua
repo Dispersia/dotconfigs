@@ -3,6 +3,7 @@ vim.pack.add({
 	"https://github.com/muniftanjim/nui.nvim",
 	"https://github.com/rcarriga/nvim-notify",
 	"https://github.com/folke/noice.nvim",
+	"https://github.com/folke/flash.nvim",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/nvimdev/dashboard-nvim",
 	"https://github.com/stevearc/conform.nvim",
