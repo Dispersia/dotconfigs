@@ -20,7 +20,6 @@ vim.pack.add({
 	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/luckasranarison/tailwind-tools.nvim",
 	"https://github.com/onsails/lspkind-nvim",
 	"https://github.com/xzbdmw/colorful-menu.nvim",

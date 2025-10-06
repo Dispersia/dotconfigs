@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				},
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path" },
 			},
 			keymap = {
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
