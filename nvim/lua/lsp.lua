@@ -1,4 +1,7 @@
 vim.lsp.enable({
+  "csharp",
+  "dart",
+  "fsharp",
 	"lua_ls",
 	"ts_ls",
 })

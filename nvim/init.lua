@@ -2,6 +2,7 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/muniftanjim/nui.nvim",
 	"https://github.com/rcarriga/nvim-notify",
+  "https://github.com/sphamba/smear-cursor.nvim",
 	"https://github.com/folke/noice.nvim",
 	"https://github.com/folke/flash.nvim",
 	"https://github.com/mason-org/mason.nvim",
