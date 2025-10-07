@@ -1,3 +1,5 @@
+local util = require("util")
+
 ---@type vim.lsp.Config
 return {
   cmd = {
@@ -16,5 +18,8 @@ return {
       },
     },
   },
-  root_markers = { "*.sln", "*.csproj", "*.git" }
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    on_dir(util.root_pattern("*.slnx", "*.sln", "*.csproj", ".git")(fname))
+  end,
 }

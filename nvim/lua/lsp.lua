@@ -1,8 +1,8 @@
 vim.lsp.enable({
-  "csharp",
   "dart",
-  "fsharp",
+  "fsautocomplete",
 	"lua_ls",
+  "roslyn",
 	"ts_ls",
 })
 
