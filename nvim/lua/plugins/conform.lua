@@ -7,6 +7,8 @@ vim.api.nvim_create_autocmd("UIEnter", {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				rust = { "rustfmt" },
+        sbt = { "scalafmt" },
+        scala = { "scalafmt" },
 				typescript = { "biome" },
 			},
 		})
