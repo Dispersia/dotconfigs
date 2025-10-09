@@ -21,6 +21,10 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.signcolumn = "yes"
 
+vim.o.wildmenu = true
+vim.o.wildmode = "longest:full,full"
+vim.o.wildoptions = "pum"
+
 vim.g.autochdir = true
 
 vim.g.indent_blankline_char = "┊"
