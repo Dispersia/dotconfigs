@@ -1,4 +1,5 @@
 vim.pack.add({
+  "https://github.com/mistweaverco/kulala.nvim",
   "https://github.com/adriankarlen/plugin-view.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/muniftanjim/nui.nvim",
