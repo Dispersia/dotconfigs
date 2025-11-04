@@ -1,6 +1,8 @@
 vim.lsp.enable({
+  "bicep",
   "dart",
   "fsautocomplete",
+  "go",
   "lua_ls",
   "metals",
   "roslyn",
