@@ -9,16 +9,6 @@ vim.lsp.enable({
   "ts_ls",
 })
 
-local function is_popup_open()
-  for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.api.nvim_win_get_config(winid).zindex then
-      return true
-    end
-  end
-
-  return false
-end
-
 local function on_attach(_, bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
 
@@ -46,14 +36,13 @@ local function on_attach(_, bufnr)
   vim.keymap.set("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   vim.keymap.set("n", "<space>so", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 
-  vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
     callback = function()
-      if not is_popup_open() then
-        vim.diagnostic.open_float({
-          focusable = false,
-          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        })
-      end
+      vim.diagnostic.open_float({
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      })
     end,
   })
 end
