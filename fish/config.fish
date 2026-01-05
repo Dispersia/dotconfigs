@@ -26,3 +26,7 @@ function y
 	end
 	rm -f -- "$tmp"
 end
+
+# >>> coursier install directory >>>
+set -gx PATH "$PATH:/home/dispe/.local/share/coursier/bin"
+# <<< coursier install directory <<<
