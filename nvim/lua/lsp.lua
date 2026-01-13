@@ -9,6 +9,7 @@ vim.lsp.enable({
   "roslyn",
   "rust_analyzer",
   "slint",
+  "terraform",
   "ts_ls",
   "zig",
 })
