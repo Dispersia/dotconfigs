@@ -24,6 +24,14 @@ function M.hot_reload()
   end
 end
 
+function M.hot_restart()
+  if flutter_job_id ~= 0 then
+    vim.fn.system("kill -USR2 $(cat /tmp/flutter.pid)")
+  else
+    vim.notify("Flutter is not running", vim.log.levels.WARN)
+  end
+end
+
 local function start_with_device(device_id)
   vim.notify("Starting Flutter" .. (device_id and (" on " .. device_id) or ""), vim.log.levels.INFO)
   local cmd = "flutter run --pid-file /tmp/flutter.pid"
@@ -81,6 +89,7 @@ end
 vim.api.nvim_create_user_command("FlutterRun", M.start, {})
 vim.api.nvim_create_user_command("FlutterStopRun", M.stop, {})
 vim.api.nvim_create_user_command("FlutterHotReload", M.hot_reload, {})
+vim.api.nvim_create_user_command("FlutterRestart", M.hot_restart, {})
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.dart",
