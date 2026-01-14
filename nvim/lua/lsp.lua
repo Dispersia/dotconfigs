@@ -3,12 +3,15 @@ vim.lsp.enable({
   "dart",
   "fsautocomplete",
   "go",
+  "kotlin",
   "lua_ls",
   "metals",
   "roslyn",
   "rust_analyzer",
   "slint",
+  "terraform",
   "ts_ls",
+  "zig",
 })
 
 local function on_attach(_, bufnr)

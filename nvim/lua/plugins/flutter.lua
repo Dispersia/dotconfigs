@@ -87,8 +87,8 @@ function M.stop()
 end
 
 vim.api.nvim_create_user_command("FlutterRun", M.start, {})
-vim.api.nvim_create_user_command("FlutterStopRun", M.stop, {})
-vim.api.nvim_create_user_command("FlutterHotReload", M.hot_reload, {})
+vim.api.nvim_create_user_command("FlutterStop", M.stop, {})
+vim.api.nvim_create_user_command("FlutterReload", M.hot_reload, {})
 vim.api.nvim_create_user_command("FlutterRestart", M.hot_restart, {})
 
 vim.api.nvim_create_autocmd("BufWritePost", {
