@@ -1,6 +1,7 @@
 vim.lsp.enable({
   "dart",
   "fsautocomplete",
+  "jsonnet",
   "lua_ls",
   "metals",
   "roslyn",
