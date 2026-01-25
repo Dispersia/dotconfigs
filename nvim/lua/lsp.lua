@@ -1,4 +1,5 @@
 vim.lsp.enable({
+  "arduino",
   "bicep",
   "dart",
   "fsautocomplete",
@@ -55,6 +56,8 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_extend("keep", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 capabilities = vim.tbl_extend("keep", capabilities, require("lsp-status").capabilities)
+
+capabilities.textDocument.semanticTokens = nil
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
