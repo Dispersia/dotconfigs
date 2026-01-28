@@ -41,6 +41,7 @@ vim.pack.add({
   "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils",
   "https://github.com/seblyng/roslyn.nvim",
   "https://github.com/f-person/git-blame.nvim",
+  "https://github.com/NeogitOrg/neogit"
 })
 
 require("plugins")
