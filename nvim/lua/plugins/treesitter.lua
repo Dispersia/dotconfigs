@@ -1,15 +1,11 @@
 vim.api.nvim_create_autocmd("UIEnter", {
 	once = true,
 	callback = function()
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter.config").setup({
 			highlight = {
 				enable = true,
 			},
-			indent = { enable = true },
-			ensure_installed = {
-				"rust",
-				"toml",
-			},
+			indent = { enable = true }
 		})
 	end,
 })

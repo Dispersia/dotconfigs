@@ -1,5 +1,4 @@
 vim.pack.add({
-  "https://github.com/mistweaverco/kulala.nvim",
   "https://github.com/adriankarlen/plugin-view.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/muniftanjim/nui.nvim",
@@ -22,8 +21,14 @@ vim.pack.add({
   "https://github.com/mikavilpas/yazi.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+  {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter",
+    version = "main"
+  },
+  {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+    version = "main"
+  },
   "https://github.com/luckasranarison/tailwind-tools.nvim",
   "https://github.com/onsails/lspkind-nvim",
   "https://github.com/xzbdmw/colorful-menu.nvim",
