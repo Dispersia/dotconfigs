@@ -1,6 +1,10 @@
 vim.api.nvim_create_autocmd("UIEnter", {
 	once = true,
 	callback = function()
+		require("notify").setup({
+			top_down = false,
+		})
+
 		require("noice").setup({
 			lsp = {
 				override = {
