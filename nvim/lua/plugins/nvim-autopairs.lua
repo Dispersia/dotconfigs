@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 
 		npairs.setup({
 			check_ts = true,
+			map_cr = false,
 			ts_config = {
 				rust = {},
 			},

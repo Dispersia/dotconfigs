@@ -38,7 +38,7 @@ vim.pack.add({
   "https://github.com/dispersia/lsp-status.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/folke/which-key.nvim",
-  "https://github.com/HiPhish/rainbow-delimiters.nvim",
+  --"https://github.com/HiPhish/rainbow-delimiters.nvim",
   "https://github.com/folke/trouble.nvim",
   "https://github.com/mfussenegger/nvim-dap",
   "https://github.com/nvim-neotest/nvim-nio",

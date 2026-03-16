@@ -46,7 +46,23 @@ vim.api.nvim_create_autocmd("InsertEnter", {
       keymap = {
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
+        ["<CR>"] = {
+          function(cmp)
+            if cmp.accept() then
+              return true
+            end
+            -- Let autopairs handle CR for brace expansion
+            local npairs_ok, npairs = pcall(require, "nvim-autopairs")
+            if npairs_ok then
+              local key = npairs.autopairs_cr()
+              if key then
+                vim.api.nvim_feedkeys(key, "n", false)
+                return true
+              end
+            end
+          end,
+          "fallback",
+        },
 
         ["<Tab>"] = {
           function(cmp)
