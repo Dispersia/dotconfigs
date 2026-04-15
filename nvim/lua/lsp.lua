@@ -8,6 +8,7 @@ vim.lsp.enable({
   "kotlin",
   "lua_ls",
   "metals",
+  "python",
   "roslyn",
   "rust_analyzer",
   "slint",

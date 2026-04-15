@@ -30,3 +30,8 @@ end
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/home/dispe/.local/share/coursier/bin"
 # <<< coursier install directory <<<
+
+# ZVM
+set -gx ZVM_INSTALL "$HOME/.zvm/self"
+set -gx PATH $PATH "$HOME/.zvm/bin"
+set -gx PATH $PATH "$ZVM_INSTALL/"
